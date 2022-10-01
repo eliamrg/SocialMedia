@@ -1,0 +1,77 @@
+<ion-content *ngIf="userLogged|async as user; else elseBlock">
+  <ion-grid>
+      <ion-row>
+          <ion-col  size-md="8" offset-md="2">
+              <ion-card >
+                  <ion-card-content>
+                      <ion-grid>
+                          <ion-row>
+                              <ion-col size-md="8" offset-md="2">
+                                  <ion-grid>
+                                      <ion-row>
+                                          <ion-col>
+                                              <div class="container-img">
+                                                  <ion-avatar >
+                                                      <ion-img src="{{user.photoURL}}" alt="" class="fotoperfil"></ion-img>
+                                                      
+                                                  </ion-avatar>
+                                                  
+                                              <div class="historia"></div>
+                                              </div>
+                                          </ion-col>
+                                          <ion-col>
+                                              <p><strong>31</strong></p>
+                                              <p>Posts</p>
+                                          </ion-col>
+                                          <ion-col>
+                                              <p><strong>1004</strong></p>
+                                              <p>Seguidores</p>
+                                          </ion-col>
+                                          <ion-col>
+                                              <p><strong>5</strong></p>
+                                              <p>Siguiendo</p>
+                                          </ion-col>
+                                      </ion-row>
+                                      <ion-row>
+                                          <ion-col>
+                                            @{{user.displayName}}
+                                          </ion-col>
+                                      </ion-row>
+                                      <ion-row>
+                                          {{user.email}}
+                                      </ion-row>
+                                      <ion-row>
+                                        <strong>LOCALIZACION:</strong>
+                                    </ion-row>
+                                    <ion-label>Latitud: </ion-label>{{latitud}}
+                                    <br>
+                                    <ion-label>Longitud: </ion-label>{{longitud}}
+                                      <ion-row>
+                                          <ion-button color="dark" href="/editar">
+                                              Editar perfil
+                                          </ion-button>
+                                      </ion-row>
+                                  </ion-grid>
+                              </ion-col>
+                          </ion-row>
+                      </ion-grid>
+                      
+                      <ion-grid>
+                          <ion-row>
+                              <ion-col size-md="8" offset-md="2">
+                                  <app-publicaciones></app-publicaciones>
+                              </ion-col>
+                          </ion-row>
+                      </ion-grid>
+                  </ion-card-content>
+                </ion-card>
+              
+              
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ng-template #elseBlock>
+  <app-login></app-login>
+</ng-template>

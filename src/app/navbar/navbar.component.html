@@ -1,0 +1,54 @@
+
+<ion-toolbar  >
+  <ion-title>
+    <div class="container">
+      <ion-label>EliGram</ion-label>
+      <div class="notificaciones" >
+        <ion-button color="light" id="trigger-notificaciones">
+          <ion-icon name="heart-outline"></ion-icon>
+        </ion-button>
+        <ion-popover trigger="trigger-notificaciones" show-backdrop="false">
+          <ng-template>
+            <ion-list>
+              <ion-item>
+                Notificacion
+              </ion-item>
+            </ion-list>
+          </ng-template>
+        </ion-popover>
+      </div>
+      
+      <div class="perfil" *ngIf="userLogged|async as user">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-avatar >
+
+                <ion-img src="{{user.photoURL}}" id="user-header-pic"></ion-img>
+                
+                <ion-popover trigger="user-header-pic">
+                  <ng-template>
+                    <ion-list>
+                      <ion-item>
+                        <ion-label>
+                          <ion-button expand="block" color="danger" (click)="cerrarSesion()">Cerrar Sesion</ion-button>
+                        </ion-label>
+                      </ion-item>
+                    </ion-list>
+                  </ng-template>
+                </ion-popover>
+              </ion-avatar>
+            </ion-col>
+            
+          </ion-row>
+        </ion-grid>
+        
+        
+      </div>
+      
+    
+    </div>
+    
+  </ion-title>
+</ion-toolbar>
+

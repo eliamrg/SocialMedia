@@ -1,0 +1,33 @@
+<div style="height: 100%; display: flex; align-items: center; justify-content: center; ">
+    
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Iniciar Sesión</ion-card-title>
+      
+      <ion-card-subtitle>Es necesario contar con una cuenta para Acceder</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div >
+
+          <ion-label>Correo electronico: </ion-label>
+          <ion-input placeholder="correo@gmail.com" required [(ngModel)]="usuario.email"></ion-input>
+          
+          <ion-label>Contraseña: </ion-label>
+          <ion-input type="password" placeholder="ingresa tu contraseña" required [(ngModel)]="usuario.contrasena"></ion-input>
+          <!--
+          <ion-button expand="block"  (click)="Ingresar()">Ingresar</ion-button>
+        
+       <ion-button expand="block" (click)="Registro()">Registro</ion-button> 
+      -->
+          <ion-button expand="block" (click)="Ingresar()">Ingresar</ion-button>
+          <ion-label > *Ingresar con Google solo disponible en WebApp*</ion-label>
+          <ion-button expand="block" (click)="IngresarGoogle()">Ingresar con Google</ion-button>  
+          <br>
+          
+          
+          <ion-label> Aun no tienes cuenta? <a href="/registro">Registrate</a></ion-label>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</div>

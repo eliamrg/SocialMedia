@@ -1,0 +1,26 @@
+<ion-grid *ngIf="userLogged|async as user">
+  <ion-row class="historias-container">
+      <ion-col size="2">
+          <ion-avatar>
+            
+              <ion-img  src="{{user.photoURL}}" id="foto-usuario"></ion-img>
+              <ion-modal trigger="foto-usuario" fullscreen="true" class="fullscreen-modal">
+                  <ng-template>
+                      <app-historia-contenido></app-historia-contenido>
+                  </ng-template>
+              </ion-modal>
+          </ion-avatar>
+          
+      </ion-col>
+      <ion-col size="10">
+          <br>
+          <ion-label >
+            @{{user.displayName}}
+          </ion-label>
+        
+      </ion-col>
+  
+  </ion-row>
+</ion-grid>
+
+

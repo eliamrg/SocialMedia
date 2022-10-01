@@ -1,0 +1,95 @@
+
+
+<ion-content *ngIf="userLogged|async; else elseBlock" mode="ios">
+  
+  <!--historias-->
+  <ion-grid>
+      <ion-row>
+          <ion-col size-md="8" offset-md="2">
+              <app-historias></app-historias>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+  
+  <!--posts-->
+  <ion-grid>
+      <ion-row *ngFor="let post of posts; let idPost = index;">
+          <ion-col  size-md="8" offset-md="2">
+              <ion-card >
+                  <ion-card-header>
+                      <ion-grid>
+                          <ion-row>
+                              <ion-col size="9">
+                                  <div class="usuario-card-header">    
+                                      <ion-avatar>
+                                          <img *ngIf="post.imagenUsuario else noimagen" src="{{post.imagenUsuario}}" width="50px">
+                                          <ng-template #noimagen>
+                                            <img  src="https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png" width="50px">
+                                          </ng-template> 
+                                      </ion-avatar>
+                                      <ion-label *ngIf="post.usuario else nouser" class="label">{{post.usuario}}</ion-label>
+                                      <ng-template #nouser>
+                                        <ion-label  class="label">Señor Usuario</ion-label>
+                                      </ng-template> 
+                                      
+                                  </div>
+                                  </ion-col>
+                                  
+                              <ion-col size="3">
+                                  <div>
+                                      <!--
+                                      <ion-button color="dark" (click)="borrar(idPost)">
+                                          <ion-icon name="trash-outline"></ion-icon>
+                                      </ion-button>
+                                      <ion-button color="dark" (click)="editar()">
+                                          <ion-icon name="create-outline"></ion-icon>
+                                      </ion-button>
+                                      -->
+                                      
+                                  </div><!--
+                                  <ion-button fill="translucent" id="trigger-popup--{{post.id}}" class="trigger"><ion-icon name="ellipsis-horizontal-outline"></ion-icon></ion-button>
+                                  <ion-popover trigger="trigger-popup--{{post.id}}">
+                                      <ng-template>
+                                          <app-popover></app-popover>
+                                      </ng-template>
+                                  </ion-popover>-->
+                              </ion-col>
+                          </ion-row>
+                          <ion-row>
+                              <div class="editar" *ngIf="editando">
+                                  <ion-input placeholder="Editar caption: Ejemplo: Hola, mundo" [(ngModel)]="post.caption"></ion-input>
+                                  {{post.caption}}
+                                  <ion-button (click)="guardar(idPost, post)">Guardar Cambios</ion-button>
+                              </div>
+                          </ion-row>
+                      </ion-grid>
+                  </ion-card-header>
+                  <ion-card-content>
+                      <ion-img  [src]="post.imagen" [routerLink]="['/publicacion',idPost]"></ion-img>
+                      
+                      <br>
+                      {{post.caption}}
+                      <!--[routerLink]="['/publicacion', post.id]"-->
+                      
+                      <div class="opciones">
+                          <ion-button color="{{colorheart}}" (click)="heart()"><ion-icon name="heart-outline"></ion-icon></ion-button>
+                          <ion-button color="{{colorplane}}" (click)="plane()"><ion-icon name="paper-plane-outline"></ion-icon></ion-button>
+                          <ion-button color="{{colorcoment}}" (click)="coment()"><ion-icon name="chatbubble-outline"></ion-icon></ion-button>
+                          <ion-button color="{{colorsave}}" (click)="save()"><ion-icon name="bookmark"></ion-icon></ion-button>
+                      </div>
+                      
+                  </ion-card-content>
+                  
+              </ion-card>
+              
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+      
+</ion-content>
+
+<ng-template #elseBlock>
+  <ion-content>
+    <app-login></app-login>
+  </ion-content>
+</ng-template>  

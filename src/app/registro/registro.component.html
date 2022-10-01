@@ -1,0 +1,46 @@
+
+<ion-content>
+  <div style="height: 100%; display: flex; align-items: center; justify-content: center; ">
+    
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">Registro de usuario</ion-card-title>
+        
+        <ion-card-subtitle>Ingresa los datos solicitados</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <div >
+  
+            <ion-label>Nombre de usuario: </ion-label>
+            <ion-input placeholder="NoobMaster69" required [(ngModel)]="usuario.nombre"></ion-input>
+            <ion-label>Correo electronico: </ion-label>
+            <ion-input placeholder="correo@gmail.com" required [(ngModel)]="usuario.email"></ion-input>
+  
+            <ion-label>Contraseña: </ion-label>
+            <ion-input type="password" placeholder="contraseña (minimo 8 caracteres)" required [(ngModel)]="usuario.contrasena"></ion-input>
+            
+            <ion-input type="password" placeholder="confirma tu contraseña" required [(ngModel)]="usuario.contrasena2"></ion-input>
+            <input style="display: none;"  type="file" accept=".png,.jpg,.jpeg"  (change)="cargarImagen($event)" id="inputFile">
+                <div style="text-align: center;">
+                  <ion-label>Subir una foto</ion-label>
+                  <br>
+                  
+                  <label  for="inputFile"><ion-icon  size="large" name="image-outline"></ion-icon></label>
+                </div>
+            
+          
+          <div *ngIf="imagenSubida" style="text-align: center;">
+            
+            <img src="{{imagenSubida}}" style="width: 20%;">
+            <br>
+            <ion-button expand="block" (click)="Registro()">Registrarse</ion-button> 
+          </div>
+           
+            <br>
+            <ion-label>Ya tienes cuenta? <a href="/feed">Iniciar Sesion</a></ion-label>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,75 @@
+<ion-content *ngIf="userLogged|async as user;">
+    <ion-card  >
+        <ion-card-header>
+            <ion-grid>
+                <ion-row>
+                  <ion-col>
+                      <ion-avatar>
+                          <img *ngIf="publicacionImprimir.imagenUsuario else noimagen"  src="{{publicacionImprimir.imagenUsuario}}" width="50px">
+                          <ng-template #noimagen>
+                          <img  src="https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png" width="50px">
+                          </ng-template> 
+                                            
+                         
+                      </ion-avatar>
+                  </ion-col>
+                  <ion-col size="12">
+                        <strong> @{{publicacionImprimir.usuario}} </strong>
+                    </ion-col>
+                    
+                </ion-row>
+            </ion-grid>
+        </ion-card-header>
+        <ion-card-content>
+            <img [src]="publicacionImprimir.imagen" alt="" >
+            
+        </ion-card-content>
+        
+        <div>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <div *ngIf="user.uid==publicacionImprimir.uid">
+                            <ion-label>Descripción (Editable):</ion-label>
+                            
+                        </div>
+                        <ion-input [(ngModel)]="publicacionImprimir.caption" placeholder="Ingresar Nueva Caption"></ion-input>
+                          
+                    </ion-col>
+                    <ion-col *ngIf="user.uid==publicacionImprimir.uid" size="2">
+                        <ion-button   expand="block" (click)="editar(publicacionImprimir)"><ion-icon size="large" name="save-outline"></ion-icon></ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-grid>
+                <ion-row>
+                    <!--iconos-->
+                    <ion-col size="1">
+                        <ion-icon name="heart-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col size="1">
+                        <ion-icon name="chatbubble-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col size="1">
+                        <ion-icon name="paper-plane-outline"></ion-icon>
+                    </ion-col>
+                    <ion-col size="1" offset="8">
+                        <ion-icon name="bookmark-outline"></ion-icon>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-button href="/feed" expand="block">Regresar</ion-button>
+                    </ion-col>
+                    <ion-col *ngIf="user.uid==publicacionImprimir.uid" size="2">
+                        <ion-button   color="danger" (click)="borrar()" expand="block"><ion-icon size="large" name="trash-outline"></ion-icon></ion-button>
+                    </ion-col>
+                    
+                </ion-row>
+                
+            </ion-grid>
+        </div>
+        
+        
+      </ion-card>
+</ion-content>

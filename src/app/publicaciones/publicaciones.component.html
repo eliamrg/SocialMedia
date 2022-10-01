@@ -1,0 +1,38 @@
+
+  <ion-grid *ngIf="userLogged|async as user;"> 
+  <ion-row>
+      <ion-col>
+          <ion-button color="dark" class="boton-grid" (click)="toggleActivo('grid')"><ion-icon name="grid-outline"></ion-icon></ion-button>
+  
+      </ion-col>
+      <ion-col>
+          <ion-button color="dark" class="boton-grid" (click)="toggleActivo('etiquetado')"><ion-icon name="pricetag-outline"></ion-icon></ion-button>
+      </ion-col>
+  </ion-row>
+  
+  <ion-row *ngIf=" activo =='grid'"> 
+      <ion-col size="4"  *ngFor="let post of posts let idPost = index;"> 
+        <ion-thumbnail *ngIf="user.uid==post.uid" >
+            
+            <ion-img [routerLink]="['/publicacion',idPost]" style="width: 100%;" [src]="post.imagen" ></ion-img>
+          </ion-thumbnail>
+        
+          <!--{{user.uid}}
+          {{post.uid}}
+          <ion-thumbnail *NgIf="user.uid==post.uid" size="">
+            
+            <ion-img [routerLink]="['/publicacion',idPost]" style="width: 100%;" [src]="post.imagen" ></ion-img>
+          </ion-thumbnail>
+          -->
+      </ion-col>
+  </ion-row>
+  <ion-row style="justify-content: center;" *ngIf=" activo =='etiquetado'"> 
+    <ion-label>No has sido etiquetado en publicaciones</ion-label>
+    <br><br>
+    
+    <br><br><br><br>
+    <ion-label>Consiguete unos amigos:(</ion-label>
+    <br><br>
+</ion-row>
+  
+</ion-grid>

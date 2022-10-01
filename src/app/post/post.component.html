@@ -1,0 +1,44 @@
+
+<ion-content mode="ios" *ngIf="userLogged|async; else elseBlock">
+  
+  <ion-grid >
+    <ion-row>
+        <ion-col >
+            <ion-card >
+              <ion-card-header>
+                  <ion-card-title style="text-align: center;">Nueva Publicacion</ion-card-title>
+                  <br>
+                <ion-card-subtitle >Sube una foto y agregale una descripcion</ion-card-subtitle>
+                
+              </ion-card-header>
+            
+              <ion-card-content>
+                
+                <ion-label>Descripción: </ion-label>
+                <ion-input placeholder="Ingresar Caption" required [(ngModel)]="nuevoPost.caption"></ion-input>
+                
+                <input style="display: none;"  type="file" accept=".png,.jpg,.jpeg"  (change)="cargarImagen($event)" id="inputFile">
+                <div style="text-align: center;">
+                  <ion-label>Tomar o subir una foto</ion-label>
+                  <br>
+                  <ion-button expand="block" (click)="TomarFoto()">Tomar Foto</ion-button>
+                  <label  for="inputFile"><ion-icon  size="large" name="folder-open-outline"></ion-icon></label>
+                </div>
+                    <div *ngIf="imagenSubida" style="text-align: center;">
+                      
+                      <img src="{{imagenSubida}}" style="width: 50%;">
+                      <br>
+                      <ion-button (click)="subir()" color="light">
+                        Postear
+                      </ion-button>
+                    </div>
+                    
+              </ion-card-content>
+            </ion-card> 
+        </ion-col>
+    </ion-row>
+  </ion-grid>  
+</ion-content>
+<ng-template #elseBlock>
+    <app-login></app-login>
+  </ng-template>
